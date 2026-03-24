@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SureStep Automation — Practical Automation for Real Businesses</title>
+  <meta name="description" content="SureStep Automation helps small and mid-sized businesses save time, reduce mistakes, and improve operations through practical automations, AI-powered workflows, and custom internal tools.">
+  <meta property="og:title" content="SureStep Automation — Practical Automation for Real Businesses">
+  <meta property="og:description" content="We help small and mid-sized businesses automate repetitive work, connect their tools, and build reliable internal systems that deliver real business value.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SureStep Automation — Practical Automation for Real Businesses">
+  <meta name="twitter:description" content="Practical automation and AI for businesses that need results, not hype.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230ea5e9'/%3E%3Cpath d='M9 17L13 21L23 11' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1a1f36;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== VARIABLES ===== */
+    :root {
+      --navy: #1a1f36;
+      --navy-light: #2d3354;
+      --teal: #0ea5e9;
+      --teal-dark: #0284c7;
+      --teal-light: #e0f2fe;
+      --teal-glow: rgba(14, 165, 233, 0.12);
+      --warm-gray: #f8f9fb;
+      --mid-gray: #6b7280;
+      --light-border: #e5e7eb;
+      --text-primary: #1a1f36;
+      --text-secondary: #4b5563;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+      --max-width: 1200px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(14, 165, 233, 0.3);
+    }
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--light-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-white:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(229,231,235,0.5);
+      transition: all var(--transition);
+    }
+    .nav.scrolled {
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--navy);
+    }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      font-size: 0.88rem !important;
+      padding: 10px 20px !important;
+      border-radius: 8px !important;
+      color: #fff !important;
+      background: var(--teal);
+    }
+    .nav-cta:hover { background: var(--teal-dark); }
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-mobile-toggle svg { display: block; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--light-border);
+        box-shadow: var(--shadow-md);
+      }
+      .nav-mobile-toggle { display: block; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 160px 0 100px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(170deg, #f8fbff 0%, #ffffff 50%, var(--warm-gray) 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--teal-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--navy);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 span { color: var(--teal); }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Hero visual — animated workflow */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .workflow-graphic {
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+    }
+    .wf-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      position: relative;
+      z-index: 2;
+      border: 1px solid rgba(229,231,235,0.6);
+    }
+    .wf-card + .wf-card { margin-top: 16px; }
+    .wf-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .wf-card-icon svg { width: 22px; height: 22px; }
+    .wf-card-icon.red { background: #fef2f2; color: #ef4444; }
+    .wf-card-icon.amber { background: #fffbeb; color: #f59e0b; }
+    .wf-card-icon.blue { background: var(--teal-light); color: var(--teal); }
+    .wf-card-icon.green { background: #ecfdf5; color: #10b981; }
+
+    .wf-arrow {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+      color: var(--light-border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .wf-result {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 600;
+      margin-top: 16px;
+      box-shadow: 0 4px 24px rgba(14, 165, 233, 0.25);
+    }
+    .wf-result-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Staggered animation for workflow cards */
+    .wf-card, .wf-arrow, .wf-result {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: wfSlideIn 0.6s ease forwards;
+    }
+    .wf-card:nth-child(1) { animation-delay: 0.3s; }
+    .wf-card:nth-child(2) { animation-delay: 0.5s; }
+    .wf-arrow:nth-of-type(1) { animation-delay: 0.6s; }
+    .wf-card:nth-child(4) { animation-delay: 0.7s; }
+    .wf-arrow:nth-of-type(2) { animation-delay: 0.8s; }
+    .wf-result { animation-delay: 1s; }
+
+    @keyframes wfSlideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Subtle float animation on result */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .wf-result.animated { animation: float 4s ease-in-out infinite; opacity: 1; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 50px; }
+      .hero-visual { order: -1; }
+      .workflow-graphic { max-width: 400px; margin: 0 auto; }
+    }
+
+    /* ===== TRUST STRIP ===== */
+    .trust-strip {
+      background: var(--navy);
+      padding: 28px 0;
+      overflow: hidden;
+    }
+    .trust-items {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 40px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.88rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .trust-item svg { color: var(--teal); flex-shrink: 0; }
+
+    /* ===== PROBLEMS ===== */
+    .problems { background: var(--warm-gray); }
+    .problems-header { text-align: center; margin-bottom: 60px; }
+    .problems-header .section-subtitle { margin: 0 auto; }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .problem-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--light-border);
+      transition: all var(--transition);
+    }
+    .problem-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+    .problem-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #fef2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: #ef4444;
+    }
+    .problem-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .problems-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== SOLUTIONS ===== */
+    .solutions-header { text-align: center; margin-bottom: 60px; }
+    .solutions-header .section-subtitle { margin: 0 auto; }
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .solution-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      border: 1px solid var(--light-border);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .solution-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--teal);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .solution-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+      transform: translateY(-4px);
+    }
+    .solution-card:hover::before { opacity: 1; }
+    .solution-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--teal-light);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .solution-icon svg { width: 26px; height: 26px; }
+    .solution-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .solution-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    @media (max-width: 900px) { .solutions-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .solutions-grid { grid-template-columns: 1fr; } }
+
+    /* ===== CASE STUDY ===== */
+    .case-study { background: var(--warm-gray); }
+    .case-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .case-content .section-label { margin-bottom: 8px; }
+    .case-content h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--navy);
+    }
+    .case-content p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .case-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .case-metric {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--light-border);
+    }
+    .case-metric-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+    .case-metric-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .case-visual {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--light-border);
+    }
+    .case-visual-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--light-border);
+    }
+    .case-visual-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .case-visual-header span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--mid-gray);
+    }
+    .case-table { width: 100%; }
+    .case-table-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 0.8fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.85rem;
+      align-items: center;
+    }
+    .case-table-row.header {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid var(--light-border);
+    }
+    .case-table-row .supplier { font-weight: 600; color: var(--navy); }
+    .case-table-row .price { font-weight: 600; }
+    .case-table-row .best {
+      color: #10b981;
+      font-weight: 700;
+    }
+    .case-badge {
+      display: inline-flex;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .case-badge.green { background: #ecfdf5; color: #10b981; }
+    .case-badge.gray { background: #f3f4f6; color: var(--mid-gray); }
+
+    .case-other {
+      margin-top: 48px;
+    }
+    .case-other h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .case-other-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .case-other-tag {
+      background: #fff;
+      border: 1px solid var(--light-border);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+    .case-other-tag:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    @media (max-width: 900px) {
+      .case-inner { grid-template-columns: 1fr; }
+      .case-visual { order: -1; }
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-header { text-align: center; margin-bottom: 60px; }
+    .how-header .section-subtitle { margin: 0 auto; }
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .how-steps::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--light-border), var(--light-border), var(--teal));
+      z-index: 0;
+    }
+    .how-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .how-step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .how-step h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .how-step p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .how-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .how-steps::before { display: none; }
+    }
+    @media (max-width: 480px) {
+      .how-steps { grid-template-columns: 1fr; }
+    }
+
+    /* ===== WHY SURESTEP ===== */
+    .why { background: var(--navy); color: #fff; }
+    .why .section-label { color: var(--teal); }
+    .why .section-title { color: #fff; }
+    .why .section-subtitle { color: rgba(255,255,255,0.7); }
+    .why-header { text-align: center; margin-bottom: 60px; }
+    .why-header .section-subtitle { margin: 0 auto; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: all var(--transition);
+    }
+    .why-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+    .why-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .why-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .why-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-header { text-align: center; margin-bottom: 60px; }
+    .testimonials-header .section-subtitle { margin: 0 auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--warm-gray);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      position: relative;
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+      color: #f59e0b;
+    }
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: normal;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .testimonial-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--mid-gray);
+    }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* Founder section responsive */
+    @media (max-width: 600px) {
+      #founder .fade-up { flex-direction: column; text-align: center; gap: 24px !important; }
+    }
+
+    /* ===== FAQ ===== */
+    .faq { background: var(--warm-gray); }
+    .faq-header { text-align: center; margin-bottom: 60px; }
+    .faq-header .section-subtitle { margin: 0 auto; }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      border: 1px solid var(--light-border);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .faq-item:hover { border-color: #d1d5db; }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      gap: 16px;
+    }
+    .faq-question:hover { color: var(--teal); }
+    .faq-chevron {
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      text-align: center;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .final-cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .final-cta p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="#0ea5e9"/>
+          <path d="M9 17L13 21L23 11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        SureStep Automation
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#solutions">Solutions</a>
+        <a href="#case-study">Results</a>
+        <a href="#how-it-works">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#book-audit" class="btn nav-cta">Book Free Audit</a>
+      </div>
+      <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1f36" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Automation that delivers real ROI
+          </div>
+          <h1>Automate the busywork.<br><span>Run your business</span> with fewer headaches.</h1>
+          <p class="hero-sub">We help small and mid-sized businesses automate repetitive work, connect their tools, and build reliable internal systems that deliver real business value.</p>
+          <div class="hero-buttons">
+            <a href="#book-audit" class="btn btn-primary">
+              Book Your Free 30-Minute Audit
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#solutions" class="btn btn-secondary">See What We Build</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="workflow-graphic">
+            <div class="wf-card">
+              <div class="wf-card-icon red">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700;margin-bottom:2px;">Manual data entry</div>
+                <div style="font-size:0.8rem;color:var(--mid-gray);">3 hours/day across spreadsheets</div>
+              </div>
+            </div>
+            <div class="wf-arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </div>
+            <div class="wf-card">
+              <div class="wf-card-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700;margin-bottom:2px;">SureStep builds automation</div>
+                <div style="font-size:0.8rem;color:var(--mid-gray);">Connected, tested, reliable</div>
+              </div>
+            </div>
+            <div class="wf-arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </div>
+            <div class="wf-result" id="wfResult">
+              <div class="wf-result-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700;margin-bottom:2px;">3 hours saved daily</div>
+                <div style="font-size:0.85rem;opacity:0.85;">Runs automatically, zero errors</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST STRIP ===== -->
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Custom-built for your operations
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          ROI-focused
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Reliable, maintainable systems
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          AI where useful, not where trendy
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Built for real workflows
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEMS ===== -->
+  <section class="problems section" id="problems">
+    <div class="container">
+      <div class="problems-header fade-up">
+        <div class="section-label">Sound familiar?</div>
+        <h2 class="section-title">The daily grind that holds your business back</h2>
+        <p class="section-subtitle">If your team is spending more time on admin than actual work, you're not alone. These are the problems we solve every day.</p>
+      </div>
+      <div class="problems-grid">
+        <div class="problem-card fade-up">
+          <div class="problem-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Copy-pasting between systems</h3>
+          <p>Your team moves data by hand between spreadsheets, emails, CRMs, and tools — wasting hours and introducing errors every day.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <div class="problem-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Tasks depend on memory</h3>
+          <p>Important steps rely on someone remembering to do them. When they forget, things slip through the cracks.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <div class="problem-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Drowning in WhatsApp and email</h3>
+          <p>Business-critical information is scattered across chat threads, inboxes, and shared drives with no structure.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <div class="problem-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3>No visibility into operations</h3>
+          <p>You can't see what's happening across the business without asking five people and checking three different tools.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <div class="problem-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Slow, inconsistent follow-up</h3>
+          <p>Leads go cold. Supplier replies get lost. Follow-ups happen late — or not at all — because there's no system.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <div class="problem-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3>Don't know where to start</h3>
+          <p>You know parts of the business should be automated, but you don't have the technical team to figure out what or how.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOLUTIONS ===== -->
+  <section class="section" id="solutions">
+    <div class="container">
+      <div class="solutions-header fade-up">
+        <div class="section-label">What we build</div>
+        <h2 class="section-title">Practical systems that make your operations run smoother</h2>
+        <p class="section-subtitle">Every solution is custom-built around how your business actually works — not a one-size-fits-all template.</p>
+      </div>
+      <div class="solutions-grid">
+        <div class="solution-card fade-up">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+          </div>
+          <h3>Workflow Automation</h3>
+          <p>Automate repetitive tasks across tools, emails, spreadsheets, forms, CRMs, and databases. Stop your team from doing work a machine should handle.</p>
+        </div>
+        <div class="solution-card fade-up">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93"/><path d="M8 6a4 4 0 0 0 3.25 3.93"/><path d="M12 18v4"/><path d="M8 22h8"/><rect x="5" y="12" width="14" height="6" rx="2"/></svg>
+          </div>
+          <h3>AI-Powered Process Automation</h3>
+          <p>Use AI for extraction, classification, summaries, routing, and decision support — only where it creates real, measurable value.</p>
+        </div>
+        <div class="solution-card fade-up">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <h3>Custom Internal Tools</h3>
+          <p>Build lightweight internal software tailored to how your business actually operates — no off-the-shelf compromises.</p>
+        </div>
+        <div class="solution-card fade-up">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/><path d="M8 12h8"/><path d="M8 9h8"/><path d="M8 15h8"/></svg>
+          </div>
+          <h3>Systems Integration</h3>
+          <p>Connect CRMs, spreadsheets, databases, APIs, WhatsApp, and operational tools into one smoother, unified workflow.</p>
+        </div>
+        <div class="solution-card fade-up">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Lead Capture, Enrichment &amp; Scoring</h3>
+          <p>Capture better leads, enrich contact data automatically, and prioritize who to follow up with — so your sales effort goes where it counts.</p>
+        </div>
+        <div class="solution-card fade-up">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3>Operations Dashboards</h3>
+          <p>Give your team clear visibility into quotes, suppliers, leads, workflows, and performance — all in one place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE STUDY ===== -->
+  <section class="case-study section" id="case-study">
+    <div class="container">
+      <div class="case-inner">
+        <div class="case-content fade-up">
+          <div class="section-label">Real results</div>
+          <h2>How a restaurant group cut procurement time by 70%</h2>
+          <p>A multi-location restaurant group received dozens of supplier price quotes through WhatsApp every week. Comparing prices manually across suppliers was slow, messy, and error-prone.</p>
+          <p>We built a system that automatically extracts quotes from WhatsApp messages, organizes them by product and supplier, and displays everything in a live comparison dashboard.</p>
+          <div class="case-metrics">
+            <div class="case-metric">
+              <div class="case-metric-value">70%</div>
+              <div class="case-metric-label">Less time on price comparison</div>
+            </div>
+            <div class="case-metric">
+              <div class="case-metric-value">5hrs</div>
+              <div class="case-metric-label">Saved per week on procurement</div>
+            </div>
+            <div class="case-metric">
+              <div class="case-metric-value">100%</div>
+              <div class="case-metric-label">Supplier quotes captured</div>
+            </div>
+            <div class="case-metric">
+              <div class="case-metric-value">Real-time</div>
+              <div class="case-metric-label">Pricing visibility</div>
+            </div>
+          </div>
+        </div>
+        <div class="case-visual fade-up">
+          <div class="case-visual-header">
+            <div class="case-visual-dot" style="background:#ef4444"></div>
+            <div class="case-visual-dot" style="background:#f59e0b"></div>
+            <div class="case-visual-dot" style="background:#10b981"></div>
+            <span>Supplier Price Dashboard</span>
+          </div>
+          <div class="case-table">
+            <div class="case-table-row header">
+              <span>Supplier</span>
+              <span>Olive Oil (1L)</span>
+              <span>Flour (25kg)</span>
+              <span>Status</span>
+            </div>
+            <div class="case-table-row">
+              <span class="supplier">Metro AG</span>
+              <span class="price best">&euro;6.40</span>
+              <span class="price">&euro;18.90</span>
+              <span><span class="case-badge green">Best</span></span>
+            </div>
+            <div class="case-table-row">
+              <span class="supplier">Hamberger</span>
+              <span class="price">&euro;7.10</span>
+              <span class="price best">&euro;16.50</span>
+              <span><span class="case-badge green">Best</span></span>
+            </div>
+            <div class="case-table-row">
+              <span class="supplier">Transgourmet</span>
+              <span class="price">&euro;6.85</span>
+              <span class="price">&euro;19.20</span>
+              <span><span class="case-badge gray">Review</span></span>
+            </div>
+            <div class="case-table-row">
+              <span class="supplier">CHEFS CULINAR</span>
+              <span class="price">&euro;7.50</span>
+              <span class="price">&euro;17.80</span>
+              <span><span class="case-badge gray">Review</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case-other fade-up">
+        <h3>Other solutions we've built</h3>
+        <div class="case-other-tags">
+          <span class="case-other-tag">Lead enrichment &amp; scoring workflows</span>
+          <span class="case-other-tag">Contact &amp; partnership prospecting</span>
+          <span class="case-other-tag">Internal operations dashboards</span>
+          <span class="case-other-tag">Multi-tool system integrations</span>
+          <span class="case-other-tag">Automated follow-up sequences</span>
+          <span class="case-other-tag">Data extraction &amp; classification</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="how-header fade-up">
+        <div class="section-label">Our process</div>
+        <h2 class="section-title">Simple, transparent, and built around your business</h2>
+        <p class="section-subtitle">No jargon. No mystery. Here's how every engagement works.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step fade-up">
+          <div class="how-step-num">1</div>
+          <h3>Audit</h3>
+          <p>We identify where time is being wasted and where automation will have the biggest payoff.</p>
+        </div>
+        <div class="how-step fade-up">
+          <div class="how-step-num">2</div>
+          <h3>Design</h3>
+          <p>We map the workflow and propose a practical, ROI-focused solution tailored to your operations.</p>
+        </div>
+        <div class="how-step fade-up">
+          <div class="how-step-num">3</div>
+          <h3>Build</h3>
+          <p>We implement the automation, integration, or internal tool — tested and ready for your team.</p>
+        </div>
+        <div class="how-step fade-up">
+          <div class="how-step-num">4</div>
+          <h3>Refine</h3>
+          <p>We test, improve, and make sure it works reliably in the real business, day after day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY SURESTEP ===== -->
+  <section class="why section" id="why">
+    <div class="container">
+      <div class="why-header fade-up">
+        <div class="section-label">Why SureStep</div>
+        <h2 class="section-title">We're not another AI agency</h2>
+        <p class="section-subtitle">We build systems that work in the real world — not demos that look good in a pitch deck.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <div class="why-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Business outcomes first</h3>
+          <p>We care about what the automation actually does for your business — not the tech behind it.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h3>Built around your workflow</h3>
+          <p>We don't force you into our way of working. We build around how your team actually operates.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Clear ROI</h3>
+          <p>Every project starts with a clear picture of the business value. If the payoff isn't there, we'll tell you.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <h3>No unnecessary complexity</h3>
+          <p>We don't over-engineer. Simple, stable systems that your team can actually use and maintain.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Reliable systems</h3>
+          <p>We build things that work tomorrow, next month, and next year — not just during the demo.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Your team can use it</h3>
+          <p>No PhD required. We build tools your actual team members can use, from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header fade-up">
+        <div class="section-label">What our clients say</div>
+        <h2 class="section-title">Trusted by business operators who value results</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"We were spending hours every week comparing supplier quotes by hand. SureStep built us a system that does it in seconds. The ROI was obvious within the first month."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MK</div>
+            <div>
+              <div class="testimonial-name">Marco K.</div>
+              <div class="testimonial-role">Operations Director, Restaurant Group</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"What I appreciated most was how practical they were. No buzzwords, no overselling. They looked at our workflow, found the bottlenecks, and fixed them. Simple as that."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SL</div>
+            <div>
+              <div class="testimonial-name">Sarah L.</div>
+              <div class="testimonial-role">Founder, Distribution Company</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"Our team used to dread Monday mornings because of all the manual reporting. Now it's automated and everyone gets a clean dashboard. They actually got us more than we asked for."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">TP</div>
+            <div>
+              <div class="testimonial-name">Thomas P.</div>
+              <div class="testimonial-role">CEO, Service Company</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOUNDER ===== -->
+  <section class="section" id="founder" style="background:#fff;">
+    <div class="container">
+      <div class="fade-up" style="display:flex;align-items:center;gap:48px;max-width:800px;margin:0 auto;">
+        <img src="jasper.png" alt="Jasper Narvil, Founder of SureStep Automation" style="width:140px;height:140px;border-radius:50%;object-fit:cover;flex-shrink:0;border:4px solid var(--teal-light);box-shadow:var(--shadow-md);">
+        <div>
+          <div class="section-label">Who's behind SureStep</div>
+          <h2 style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:12px;">Built by someone who understands your operations</h2>
+          <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.7;margin-bottom:8px;">I'm Jasper Narvil, founder of SureStep Automation. I work directly with every client to understand how their business actually runs — then build automation systems that fit, not ones that look good on a slide deck.</p>
+          <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.7;">If you're tired of duct-taped workflows and want systems that save real time, let's talk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="faq-header fade-up">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common questions</h2>
+        <p class="section-subtitle">Straightforward answers to help you decide if we're the right fit.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            What kinds of businesses do you work with?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We work with small and mid-sized businesses across a wide range of industries — restaurants, service companies, distributors, operations teams, and more. If your business has repetitive manual processes, disconnected tools, or workflows that rely on people remembering steps, we can probably help.</div>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            Do I need to know exactly what I want automated?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Not at all. Most clients know something is inefficient but aren't sure what the solution looks like. That's exactly what the free audit is for — we'll identify the biggest opportunities together and recommend where to start.</div>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            Do you only build AI solutions?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No. We use AI where it genuinely adds value — like data extraction or classification — but many of our solutions are straightforward automations, integrations, and internal tools. We pick the right tool for the job, not the trendiest one.</div>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            Can you work with our existing tools?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Absolutely. We build around what you already use — spreadsheets, CRMs, WhatsApp, email, databases, and more. The goal is to connect and streamline your existing stack, not replace it.</div>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            What does the free audit include?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">A 30-minute call where we learn about your current operations, identify the biggest time sinks and pain points, and give you a clear picture of where automation would have the most impact — including a rough estimate of time and cost savings. No obligation, no hard sell.</div>
+          </div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-question" aria-expanded="false">
+            How long does a project usually take?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">It depends on complexity. Simple automations and integrations can be delivered in 1–2 weeks. Larger systems with dashboards and custom tools typically take 3–6 weeks. We'll give you a clear timeline during the design phase.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="final-cta" id="book-audit">
+    <div class="container">
+      <div class="fade-up">
+        <h2>Still doing hours of work your<br>business should have automated?</h2>
+        <p>Let's find the bottlenecks, estimate the payoff, and show you where automation can make the biggest difference. The audit is free, and there's no obligation.</p>
+        <!-- Calendly embed placeholder — replace YOUR_CALENDLY_LINK below -->
+        <div class="calendly-placeholder" style="background:rgba(255,255,255,0.06);border:2px dashed rgba(255,255,255,0.2);border-radius:16px;padding:48px 32px;max-width:560px;margin:0 auto 32px;">
+          <div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:8px;">Book your free 30-minute audit</div>
+          <div style="font-size:0.9rem;color:rgba(255,255,255,0.6);margin-bottom:24px;">Choose a time that works for you</div>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/jaspernarvil/30min" style="min-width:320px;height:660px;"></div>
+          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+        <div style="font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:20px;">Or reach out directly:</div>
+        <a href="mailto:partnerships@surestepautomation.com" class="btn btn-white">
+          partnerships@surestepautomation.com
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <!-- Back to top -->
+  <button id="backToTop" aria-label="Back to top" style="position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(14,165,233,0.3);z-index:999;transition:all 0.3s ease;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#0ea5e9"/>
+            <path d="M9 17L13 21L23 11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          SureStep Automation
+        </div>
+        <div class="footer-links">
+          <a href="#solutions">Solutions</a>
+          <a href="#case-study">Results</a>
+          <a href="#how-it-works">Process</a>
+          <a href="#faq">FAQ</a>
+          <a href="mailto:partnerships@surestepautomation.com">partnerships@surestepautomation.com</a>
+        </div>
+      </div>
+      <div class="footer-copy">&copy; 2026 SureStep Automation. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Scroll-triggered fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = null;
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked (if it wasn't already open)
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Add float animation to result card after initial slide-in
+    setTimeout(() => {
+      const wfResult = document.getElementById('wfResult');
+      if (wfResult) wfResult.classList.add('animated');
+    }, 2000);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 600 ? 'flex' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
