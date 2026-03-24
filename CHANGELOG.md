@@ -2,6 +2,12 @@
 
 ## 2026-03-23
 
+### Added — WhatsApp contact button
+- "WhatsApp us" button in the final CTA section alongside the email link
+- Pre-filled message: "Hi Jasper, I'm interested in learning more about SureStep Automation."
+- WhatsApp link also added to footer
+- Uses the official wa.me click-to-chat API
+
 ### Updated — Cookie banner now gates Calendly loading
 - Calendly CSS and JS only load after user clicks "Accept"
 - If cookies rejected/pending, shows a fallback message with an "Accept cookies & show calendar" button
