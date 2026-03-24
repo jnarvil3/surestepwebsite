@@ -2,6 +2,12 @@
 
 ## 2026-03-23
 
+### Added — GDPR cookie consent banner
+- Fixed bottom banner with Accept/Reject buttons
+- Persists choice in localStorage so it only shows once
+- Slides up after 800ms delay, accessible with role="dialog"
+- Responsive layout (stacks on mobile)
+
 ### Added — Expanded case studies section
 - Replaced the 4 static "Other solutions we've built" tags with full case study blocks
 - Each new case study follows the same format as the existing lead prospecting one (visual + metrics + narrative)
