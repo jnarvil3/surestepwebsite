@@ -2,6 +2,11 @@
 
 ## 2026-03-23
 
+### Updated — Cookie banner now gates Calendly loading
+- Calendly CSS and JS only load after user clicks "Accept"
+- If cookies rejected/pending, shows a fallback message with an "Accept cookies & show calendar" button
+- Fully GDPR-compliant: no third-party scripts fire without consent
+
 ### Added — GDPR cookie consent banner
 - Fixed bottom banner with Accept/Reject buttons
 - Persists choice in localStorage so it only shows once
