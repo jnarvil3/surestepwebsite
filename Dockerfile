@@ -1,7 +1,7 @@
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html /usr/share/nginx/html/index.html
-COPY index-v1.html /usr/share/nginx/html/index-v1.html
+COPY hello.html /usr/share/nginx/html/hello.html
 COPY styles.css /usr/share/nginx/html/styles.css
 COPY 404.html /usr/share/nginx/html/404.html
 COPY sitemap.xml /usr/share/nginx/html/sitemap.xml
