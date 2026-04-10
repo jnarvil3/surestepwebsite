@@ -592,6 +592,233 @@
         footer a:hover { color: var(--blue-400); }
         footer a.primary { color: var(--blue-400); font-weight: 500; }
 
+        /* ===== RECOMMENDATION QUIZ ===== */
+        .quiz-section {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        .quiz-card {
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(15,23,42,0.06), 0 1px 3px rgba(15,23,42,0.04);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .quiz-header {
+            padding: 22px 28px 16px;
+            border-bottom: 1px solid var(--slate-100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quiz-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .quiz-header-icon {
+            width: 34px; height: 34px;
+            background: linear-gradient(135deg, var(--blue-500), var(--emerald-500));
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .quiz-header-icon svg { width: 16px; height: 16px; color: white; }
+        .quiz-header h2 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            color: var(--slate-900);
+        }
+        .quiz-header .quiz-sub {
+            font-size: 0.78rem;
+            color: var(--slate-500);
+            margin-top: 1px;
+        }
+        .quiz-dismiss {
+            background: none;
+            border: none;
+            color: var(--slate-400);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 6px;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quiz-dismiss:hover { background: var(--slate-100); color: var(--slate-600); }
+        .quiz-progress { height: 3px; background: var(--slate-100); }
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue-500), var(--emerald-500));
+            transition: width 0.4s ease;
+            border-radius: 0 2px 2px 0;
+        }
+        .quiz-body { padding: 24px 28px 28px; }
+        .quiz-step { display: none; animation: quizFadeIn 0.3s ease; }
+        .quiz-step.active { display: block; }
+        @keyframes quizFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-step .step-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--blue-500);
+            margin-bottom: 6px;
+        }
+        .quiz-step .step-question {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 18px;
+            line-height: 1.35;
+            color: var(--slate-900);
+        }
+        .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+        .quiz-option {
+            background: var(--slate-50);
+            border: 1.5px solid var(--slate-200);
+            border-radius: 10px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.875rem;
+            color: var(--slate-900);
+            width: 100%;
+        }
+        .quiz-option:hover {
+            border-color: var(--blue-400);
+            background: rgba(59,130,246,0.04);
+            transform: translateX(2px);
+        }
+        .quiz-option .opt-icon {
+            width: 32px; height: 32px;
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 15px;
+        }
+        .quiz-option:hover .opt-icon {
+            border-color: var(--blue-400);
+            background: rgba(59,130,246,0.06);
+        }
+        .quiz-option .opt-text strong {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1px;
+        }
+        .quiz-option .opt-text span {
+            font-size: 0.78rem;
+            color: var(--slate-500);
+            line-height: 1.4;
+        }
+        .result-card {
+            background: var(--slate-50);
+            border: 1.5px solid var(--slate-200);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 10px;
+        }
+        .result-card .result-match {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--emerald-600);
+            background: var(--emerald-50);
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+        .result-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: -0.2px;
+            color: var(--slate-900);
+        }
+        .result-card p {
+            font-size: 0.82rem;
+            color: var(--slate-500);
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+        .result-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .result-tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--slate-600);
+            background: white;
+            border: 1px solid var(--slate-200);
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+        .quiz-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue-500);
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 11px 22px;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            margin-top: 14px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.2);
+        }
+        .quiz-cta-btn:hover { background: var(--blue-600); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(59,130,246,0.3); }
+        .quiz-cta-btn svg { width: 14px; height: 14px; }
+        .quiz-restart {
+            background: none;
+            border: none;
+            color: var(--slate-500);
+            font-family: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.15s;
+        }
+        .quiz-restart:hover { color: var(--slate-900); background: var(--slate-100); }
+        .quiz-card.collapsed .quiz-body,
+        .quiz-card.collapsed .quiz-progress { display: none; }
+        .quiz-card.collapsed .quiz-header { border-bottom: none; }
+
+        @media (max-width: 768px) {
+            .quiz-section { margin-top: -20px; }
+            .quiz-body { padding: 18px 18px 22px; }
+            .quiz-header { padding: 18px 18px 14px; }
+        }
+
         /* ===== SCROLL ANIMATIONS ===== */
         .fade-up {
             opacity: 0;
@@ -720,6 +947,162 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- ===== RECOMMENDATION QUIZ ===== -->
+    <div class="section-padding white-bg" style="padding-top: 0;">
+      <section class="quiz-section">
+        <div class="quiz-card" id="quizCard">
+          <div class="quiz-header">
+            <div class="quiz-header-left">
+              <div class="quiz-header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+              </div>
+              <div>
+                <h2>Find your automation</h2>
+                <p class="quiz-sub">3 quick questions — 30 seconds</p>
+              </div>
+            </div>
+            <button class="quiz-dismiss" onclick="toggleQuiz()" id="dismissBtn" title="Minimize">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="quiz-progress"><div class="quiz-progress-bar" id="progressBar" style="width: 0%"></div></div>
+          <div class="quiz-body" id="quizBody">
+
+            <!-- Step 1: Business type (local first) -->
+            <div class="quiz-step active" id="step1">
+              <div class="step-label">Question 1 of 3</div>
+              <div class="step-question">What kind of business do you run?</div>
+              <div class="quiz-options">
+                <button class="quiz-option" onclick="quizAnswer(1, 'local')">
+                  <div class="opt-icon">📍</div>
+                  <div class="opt-text">
+                    <strong>Local / brick-and-mortar</strong>
+                    <span>Restaurant, clinic, gym, pet store</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(1, 'services')">
+                  <div class="opt-icon">🏢</div>
+                  <div class="opt-text">
+                    <strong>Professional services</strong>
+                    <span>Agency, consulting, legal, accounting</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(1, 'ecommerce')">
+                  <div class="opt-icon">🛒</div>
+                  <div class="opt-text">
+                    <strong>E-commerce / retail</strong>
+                    <span>Online store, marketplace, D2C brand</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(1, 'saas')">
+                  <div class="opt-icon">💻</div>
+                  <div class="opt-text">
+                    <strong>SaaS / tech product</strong>
+                    <span>Software, app, or platform</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(1, 'other')">
+                  <div class="opt-icon">✦</div>
+                  <div class="opt-text">
+                    <strong>Something else</strong>
+                    <span>Non-profit, creator, freelancer, other</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Pain point (content/social media last) -->
+            <div class="quiz-step" id="step2">
+              <div class="step-label">Question 2 of 3</div>
+              <div class="step-question">What takes up the most manual time right now?</div>
+              <div class="quiz-options">
+                <button class="quiz-option" onclick="quizAnswer(2, 'leads')">
+                  <div class="opt-icon">🎯</div>
+                  <div class="opt-text">
+                    <strong>Finding & qualifying leads</strong>
+                    <span>Prospecting, outreach, lead scoring</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(2, 'comms')">
+                  <div class="opt-icon">💬</div>
+                  <div class="opt-text">
+                    <strong>Client / supplier communication</strong>
+                    <span>Follow-ups, order tracking, coordination</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(2, 'ops')">
+                  <div class="opt-icon">⚙️</div>
+                  <div class="opt-text">
+                    <strong>Internal operations</strong>
+                    <span>Data entry, reporting, process management</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(2, 'content')">
+                  <div class="opt-icon">📱</div>
+                  <div class="opt-text">
+                    <strong>Content & social media</strong>
+                    <span>Creating posts, scheduling, engagement</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(2, 'unsure')">
+                  <div class="opt-icon">🤔</div>
+                  <div class="opt-text">
+                    <strong>I'm not sure yet</strong>
+                    <span>I'd like an expert to help me figure it out</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Current maturity -->
+            <div class="quiz-step" id="step3">
+              <div class="step-label">Question 3 of 3</div>
+              <div class="step-question">How do you handle that today?</div>
+              <div class="quiz-options">
+                <button class="quiz-option" onclick="quizAnswer(3, 'manual')">
+                  <div class="opt-icon">📋</div>
+                  <div class="opt-text">
+                    <strong>Manually — spreadsheets, email, phone</strong>
+                    <span>No automation in place yet</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(3, 'partial')">
+                  <div class="opt-icon">🔧</div>
+                  <div class="opt-text">
+                    <strong>Some tools, but lots of gaps</strong>
+                    <span>CRM, Zapier, or similar — but still manual work</span>
+                  </div>
+                </button>
+                <button class="quiz-option" onclick="quizAnswer(3, 'overwhelmed')">
+                  <div class="opt-icon">🌊</div>
+                  <div class="opt-text">
+                    <strong>Too many tools, nothing connects</strong>
+                    <span>Drowning in disconnected systems</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Results -->
+            <div class="quiz-step" id="stepResults">
+              <div class="step-label">Your recommendations</div>
+              <div class="step-question" id="resultsHeading">Here's what we'd suggest</div>
+              <div id="resultsContainer"></div>
+              <a href="https://calendly.com/jaspernarvil/30min" target="_blank" class="quiz-cta-btn">
+                Let's talk about it
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <br>
+              <button class="quiz-restart" onclick="resetQuiz()">← Start over</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- ===== PROOF STATS with animated counters ===== -->
@@ -932,6 +1315,117 @@
         }, { threshold: 0.5 });
 
         document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+        // ===== RECOMMENDATION QUIZ =====
+        let quizAnswers = {};
+        let quizCollapsed = false;
+
+        function quizAnswer(step, value) {
+            quizAnswers[step] = value;
+            document.getElementById('progressBar').style.width = ((step / 3) * 100) + '%';
+            document.getElementById('step' + step).classList.remove('active');
+            if (step < 3) {
+                document.getElementById('step' + (step + 1)).classList.add('active');
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('progressBar').style.width = '100%';
+            const recs = getQuizRecs(quizAnswers);
+            const container = document.getElementById('resultsContainer');
+            container.innerHTML = '';
+            recs.forEach((rec, i) => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.innerHTML = `
+                    <div class="result-match">${i === 0 ? '✓ Best match' : 'Also recommended'}</div>
+                    <h3>${rec.title}</h3>
+                    <p>${rec.description}</p>
+                    <div class="result-tags">${rec.tags.map(t => `<span class="result-tag">${t}</span>`).join('')}</div>
+                `;
+                container.appendChild(card);
+            });
+            document.getElementById('stepResults').classList.add('active');
+        }
+
+        function getQuizRecs(a) {
+            const biz = a[1], pain = a[2], maturity = a[3];
+            const all = {
+                procurement: {
+                    title: 'WhatsApp Procurement Bot',
+                    description: 'Automate supplier communication and purchase orders through WhatsApp. No more chasing emails — your procurement runs on the platform your suppliers already use.',
+                    tags: ['WhatsApp API', 'Order tracking', 'Supplier coordination']
+                },
+                leadQual: {
+                    title: 'Lead Qualification System',
+                    description: 'Automatically score and rank inbound leads so your sales team focuses on the highest-value prospects instead of sorting through noise.',
+                    tags: ['Lead scoring', 'CRM integration', 'Sales automation']
+                },
+                prospecting: {
+                    title: 'B2B Prospecting Pipeline',
+                    description: 'Find and enrich potential partners or clients automatically — web scraping, contact enrichment, and relevance scoring piped straight into your CRM or Google Sheets.',
+                    tags: ['Web scraping', 'Lead enrichment', 'Google Sheets']
+                },
+                contentStudio: {
+                    title: 'AI Content Studio',
+                    description: 'Generate branded social media content from trending topics and industry signals. Review and approve everything in a simple dashboard before it goes live.',
+                    tags: ['Content generation', 'Social media', 'Brand consistency']
+                },
+                leadTracker: {
+                    title: 'Social Lead Tracker + WhatsApp Bot',
+                    description: 'Capture leads from social media channels and automate follow-up sequences via WhatsApp — so no lead slips through the cracks.',
+                    tags: ['Social media', 'WhatsApp', 'Auto follow-up']
+                },
+                audit: {
+                    title: 'Process Audit & Strategy Session',
+                    description: "Not sure where to start? We'll map your current workflows, identify bottlenecks, and recommend the automations with the biggest impact on your bottom line.",
+                    tags: ['Process mapping', 'ROI analysis', 'Custom roadmap']
+                },
+                aiEducation: {
+                    title: 'AI Education & Training',
+                    description: 'Get your team up to speed on AI tools and automation thinking. Hands-on workshops tailored to your industry and current tech stack.',
+                    tags: ['Team training', 'AI tools', 'Hands-on workshops']
+                }
+            };
+            let primary = [], secondary = [];
+            if (pain === 'leads') {
+                if (biz === 'local' || biz === 'ecommerce') { primary.push(all.prospecting); secondary.push(all.leadTracker); }
+                else { primary.push(all.leadQual); secondary.push(all.prospecting); }
+            } else if (pain === 'comms') {
+                primary.push(all.procurement);
+                secondary.push(biz === 'services' || biz === 'saas' ? all.leadQual : all.leadTracker);
+            } else if (pain === 'content') {
+                primary.push(all.contentStudio);
+                secondary.push(all.leadTracker);
+            } else if (pain === 'ops') {
+                if (maturity === 'overwhelmed') { primary.push(all.audit); secondary.push(all.procurement); }
+                else { primary.push(all.procurement); secondary.push(all.audit); }
+            } else if (pain === 'unsure') {
+                primary.push(all.audit);
+                secondary.push(all.aiEducation);
+            }
+            if (maturity === 'manual' && primary[0] !== all.audit) { secondary = [all.audit]; }
+            return [...primary, ...secondary].slice(0, 2);
+        }
+
+        function toggleQuiz() {
+            const card = document.getElementById('quizCard');
+            quizCollapsed = !quizCollapsed;
+            card.classList.toggle('collapsed', quizCollapsed);
+            document.getElementById('dismissBtn').title = quizCollapsed ? 'Expand' : 'Minimize';
+            document.getElementById('dismissBtn').innerHTML = quizCollapsed
+                ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>'
+                : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>';
+        }
+
+        function resetQuiz() {
+            quizAnswers = {};
+            document.getElementById('progressBar').style.width = '0%';
+            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
+        }
 
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
