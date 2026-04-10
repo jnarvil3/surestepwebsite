@@ -750,8 +750,10 @@ ul { list-style: none; }
 .testimonials-header .section-subtitle { margin: 0 auto; }
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 .testimonial-card {
   background: var(--slate-50);
