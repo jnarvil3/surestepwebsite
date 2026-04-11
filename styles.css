@@ -15,7 +15,7 @@ ul { list-style: none; }
 
 /* ===== VARIABLES ===== */
 :root {
-  /* Primary — slate spectrum */
+  /* Primary - slate spectrum */
   --slate-900: #0f172a;
   --slate-800: #1e293b;
   --slate-700: #334155;
@@ -27,7 +27,7 @@ ul { list-style: none; }
   --slate-100: #f1f5f9;
   --slate-50: #f8fafc;
 
-  /* Accent — blue */
+  /* Accent - blue */
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
   --blue-400: #60a5fa;
@@ -35,7 +35,7 @@ ul { list-style: none; }
   --blue-600: #2563eb;
   --blue-700: #1d4ed8;
 
-  /* Proof / success — emerald */
+  /* Proof / success - emerald */
   --emerald-50: #ecfdf5;
   --emerald-500: #10b981;
   --emerald-600: #059669;
