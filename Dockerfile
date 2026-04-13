@@ -18,4 +18,5 @@ COPY terms-of-service.html /usr/share/nginx/html/terms-of-service.html
 COPY data-deletion.html /usr/share/nginx/html/data-deletion.html
 COPY welcome.html /usr/share/nginx/html/welcome.html
 COPY case-studies/ /usr/share/nginx/html/case-studies/
+COPY blog/ /usr/share/nginx/html/blog/
 EXPOSE 80
