@@ -43,6 +43,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://surestepautomation.com/blog</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://surestepautomation.com/blog/five-signs-your-business-is-ready-for-automation</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://surestepautomation.com/privacy-policy</loc>
     <lastmod>2026-04-08</lastmod>
     <changefreq>yearly</changefreq>
