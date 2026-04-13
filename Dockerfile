@@ -19,4 +19,6 @@ COPY data-deletion.html /usr/share/nginx/html/data-deletion.html
 COPY welcome.html /usr/share/nginx/html/welcome.html
 COPY case-studies/ /usr/share/nginx/html/case-studies/
 COPY blog/ /usr/share/nginx/html/blog/
+COPY pt/ /usr/share/nginx/html/pt/
+COPY es/ /usr/share/nginx/html/es/
 EXPOSE 80

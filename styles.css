@@ -1229,6 +1229,30 @@ ul { list-style: none; }
   .legal-step { flex-direction: column; gap: 12px; padding: 20px; }
 }
 
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--slate-600);
+  background: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  transition: all var(--transition);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.lang-switch:hover {
+  color: var(--blue-500);
+  border-color: var(--blue-500);
+  background: var(--blue-50);
+}
+
 /* ===== BLOG INDEX ===== */
 .blog-hero {
   padding: 140px 0 60px;

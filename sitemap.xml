@@ -55,6 +55,42 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://surestepautomation.com/pt</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://surestepautomation.com/pt/blog</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://surestepautomation.com/pt/blog/cinco-sinais-de-que-sua-empresa-precisa-de-automacao</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://surestepautomation.com/es</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://surestepautomation.com/es/blog</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://surestepautomation.com/es/blog/cinco-senales-de-que-tu-negocio-necesita-automatizacion</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://surestepautomation.com/privacy-policy</loc>
     <lastmod>2026-04-08</lastmod>
     <changefreq>yearly</changefreq>

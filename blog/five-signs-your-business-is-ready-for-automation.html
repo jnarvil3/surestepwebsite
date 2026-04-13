@@ -42,7 +42,18 @@
     }
   }
   </script>
+  <link rel="alternate" hreflang="en" href="https://surestepautomation.com/blog/five-signs-your-business-is-ready-for-automation">
+  <link rel="alternate" hreflang="pt-BR" href="https://surestepautomation.com/pt/blog/cinco-sinais-de-que-sua-empresa-precisa-de-automacao">
+  <link rel="alternate" hreflang="es" href="https://surestepautomation.com/es/blog/cinco-senales-de-que-tu-negocio-necesita-automatizacion">
   <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function(){
+      if (sessionStorage.getItem('lang-override')) return;
+      var lang = (navigator.language || '').toLowerCase();
+      if (lang.startsWith('pt')) { window.location.replace('/pt/blog/cinco-sinais-de-que-sua-empresa-precisa-de-automacao'); }
+      else if (lang.startsWith('es')) { window.location.replace('/es/blog/cinco-senales-de-que-tu-negocio-necesita-automatizacion'); }
+    })();
+  </script>
 </head>
 <body id="top">
 
