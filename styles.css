@@ -589,6 +589,13 @@ ul { list-style: none; }
   letter-spacing: 0.04em;
   border-bottom: 2px solid var(--slate-200);
 }
+.case-table-row > * { min-width: 0; }
+.case-table-row .supplier,
+.case-table-row .price {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .case-table-row .supplier { font-weight: 600; color: var(--slate-900); }
 .case-table-row .price { font-weight: 600; }
 .case-table-row .best {
